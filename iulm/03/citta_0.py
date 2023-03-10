@@ -100,3 +100,10 @@ def citta_per_intervallo_popolazione(listacitta, intervallo):
 lista = citta_per_intervallo_popolazione(citta_grandi, intervallo)
 print(len(lista))
 print(lista)
+
+'''
+55
+['Tokyo', 'Delhi', 'Shanghai', 'Sao Paulo', 'Mexico City', 'Dhaka', 'Cairo', 'Beijing', 'Mumbai', 'Osaka', 'Karachi', 'Chongqing', 'Istanbul', 'Buenos Aires', 'Kolkata', 'Kinshasa', 'Lagos', 'Manila', 'Tianjin', 'Guangzhou', 'Rio de Janeiro', 'Lahore', 'Bangalore', 'Moscow', 'Shenzhen', 'Chennai', 'Bogota', 'Paris', 'Jakarta', 'Lima', 'Bangkok', 'Hyderabad', 'Seoul', 'Nagoya', 'London', 'Chengdu', 'Tehran', 'Nanjing', 'Ho Chi Minh City', 'Luanda', 'Wuhan', 'Xi-an Shaanxi', 'Ahmedabad', 'New York City', 'Kuala Lumpur', 'Hangzhou', 'Hong Kong', 'Surat', 'Dongguan', 'Suzhou', 'Foshan', 'Riyadh', 'Shenyang', 'Baghdad', 'Dar es Salaam']
+6
+['Santiago', 'Pune', 'Madrid', 'Haerbin', 'Toronto', 'Belo Horizonte']
+'''
