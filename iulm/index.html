@@ -72,6 +72,66 @@ Nel file, alla fine, c'è una parte commentata che mostra l'output che il progra
 <a href="./04/bridges.data">bridges.data</a> i dati sui ponti di Pittsburgh.<br>
 <a href="./04/ponti.py">ponti.py</a> il programma che all'inizio calcola dati riassuntivi sui ponti di Pittsburgh, PA (USA) e poi abbiamo generalizzato in una funzione che calcola dati riassuntivi su un file csv qualsiasi.<br>
 <a href="./04/bridges.py">bridges.py</a> il mio codice originale sui ponti di Pittsburgh: ci sono più funzioni che svolgono alcuni compiti accessori. In particolare, una "inverte il dizionario", nel senso che crea un dizionario che ha come chiavi il numero di ponti, e come valori gli anni in cui sono stati costruiti quel numero di ponti (per cui 1 sarà associato ad una lista con tutti gli anni in cui è stato costruito un ponte, 2 con una lista con tutti gli anni in cui sono stati costruiti 2 ponti, e così via. Dateci un'occhiata e se volete ne parliamo alla prossima lezione.<br>
-<a href="https://github.com/MuseumofModernArt/collection/blob/master/Artists.csv">Artists,csv</a> il file sugli artisti rappresentati al MoMA.<br>
+<a href="https://github.com/MuseumofModernArt/collection/blob/master/Artists.csv">Artists,csv</a> il file sugli artisti rappresentati al MoMA.
+</li>
+<p>
+</p>
+<li>
+2023-03-17: <b>Classi, Scrittura file</b><br>
+<i>Argomenti:</i> Classi: definizione, ereditarietà. Esempi. Modulo CSV: scrittura file.<br>
+<i>File usati in aula:</i><br>
+<a href="./05/person.py">person.py</a>Classi Person e Student.<br>
+<a href="./05/person01.py">person01.py</a>File di esempio per le classi Person e Student.<br>
+<a href="./05/libro.py">libro.py</a>Classe Libro.<br>
+<a href="./05/libro01.py">libro01.py</a>File di esempio per la classe libro con il controllo dell'ISBN (ho aggiornato il programma per gestire i casi di lunghezza 10 e 13).<br>
+</li>
+<p>
+</p>
+<li>
+Assignment Finale: <b>Vlookup in python</b><br>
+<i>Descrizione:</i> Scrivere una funzione che svolge lo stesso compito svolto dalla funzione VLOOKUP di Excel (in italiano è la funzione CERCA.VERT).<br>
+La funzione accetta quattro parametri:
+<i>nomefile</i>: il nome di un file csv da analizzare<br>
+<i>campo</i>: la stringa del campo in cui si vuole cercare un certo valore<br>
+<i>valore</i>: il valore di quel campo<br>
+<i>output</i>: il campo da restituire<br>
+e restituisce una lista degli OUTPUT delle righe che verificano la condizione CAMPO = VALORE.
+<p></p>
+Ad esempio, si consideri il file bridges.data che abbiamo utilizzato nelle lezioni precedenti:
+<pre>
+IDENTIF,RIVER,LOCATION,ERECTED,PURPOSE,LENGTH,LANES,CLEAR-G,T-OR-D,MATERIAL,SPAN,REL-L,TYPE
+E1,M,3,1818,HIGHWAY,?,2,N,THROUGH,WOOD,SHORT,S,WOOD
+E2,A,25,1819,HIGHWAY,1037,2,N,THROUGH,WOOD,SHORT,S,WOOD
+E3,A,39,1829,AQUEDUCT,?,1,N,THROUGH,WOOD,?,S,WOOD
+E5,A,29,1837,HIGHWAY,1000,2,N,THROUGH,WOOD,SHORT,S,WOOD
+E6,M,23,1838,HIGHWAY,?,2,N,THROUGH,WOOD,?,S,WOOD
+E7,A,27,1840,HIGHWAY,990,2,N,THROUGH,WOOD,MEDIUM,S,WOOD
+E8,A,28,1844,AQUEDUCT,1000,1,N,THROUGH,IRON,SHORT,S,SUSPEN
+E9,M,3,1846,HIGHWAY,1500,2,N,THROUGH,IRON,SHORT,S,SUSPEN
+E10,A,39,1848,AQUEDUCT,?,1,N,DECK,WOOD,?,S,WOOD
+...
+</pre>
+In tal caso le istruzioni:
+<pre>
+vlookup(nomefile = 'bridges.data', campo = 'MATERIAL', valore = 'WOOD', output = 'IDENTIF')
+vlookup(nomefile = 'bridges.data', campo = 'PURPOSE', valore = 'HIGHWAY', output = 'IDENTIF')
+vlookup(nomefile = 'bridges.data', campo = 'PURPOSE', valore = 'HIGHWAY', output = 'LENGTH')
+vlookup(nomefile = 'bridges.data', campo = 'MATERIAL', valore = 'PAPER', output = 'IDENTIF')
+</pre>
+producono:
+<pre>
+['E1', 'E2', 'E3', 'E5', 'E6', 'E7', 'E10', 'E11', 'E12', 'E14', 'E13', 'E15', 'E19', 'E20', 'E22', 'E4']
+
+['E1', 'E2', 'E5', 'E6', 'E7', 'E9', 'E11', 'E14', 'E13', 'E16', 'E19', 'E20', 'E23', 'E22', 'E29', 'E28', 'E32', 'E33', 'E36', 'E35', 'E38', 'E39', 'E40', 'E41', 'E42', 'E44', 'E43', 'E58', 'E48', 'E49', 'E54', 'E56', 'E55', 'E59', 'E60', 'E64', 'E66', 'E70', 'E69', 'E101', 'E73', 'E72', 'E67', 'E75', 'E74', 'E71', 'E68', 'E78', 'E77', 'E76', 'E93', 'E79', 'E108', 'E105', 'E103', 'E97', 'E99', 'E98', 'E81', 'E80', 'E88', 'E82', 'E102', 'E83', 'E86', 'E85', 'E84', 'E91', 'E90', 'E100', 'E109']
+
+['?', '1037', '1000', '?', '990', '1500', '1000', '1200', '?', '1030', '1000', '1000', '1245', '1200', '1080', '1000', '?', '1120', '?', '1000', '?', '?', '?', '?', '2367', '?', '1040', '1200', '2000', '1850', '1240', '?', '1730', '1652', '1000', '885', '2365', '860', '884', '1770', '1508', '2663', '1330', '2678', '2220', '860', '2250', '1365', '1450', '1500', '1690', '1800', '1060', '1710', '2160', '?', '1320', '900', '2423', '1031', '2300', '804', '1700', '1000', '980', '2213', '870', '3756', '950', '?', '?']
+
+[]
+</pre>
+I file da utilizzare sono
+<a href="./assignment/vlookup_start.py">vlookup_start.py</a>Il file di partenza, senza il corpo della funzione e con gli esempi.<br>
+<a href="./assignment/bridges.data">bridges.data</a> i dati sui ponti di Pittsburgh.<br>
+Quando avete scritto la funzione, verificate che l'output della console sia esattamente quello riportato qui sopra. Questo è lo <a href="./assignment/Screenshot.png">screenshot</a> del mio spyder dopo l'esecuzione delle funzioni.
+</li>
 </ul>
 </body></html>
